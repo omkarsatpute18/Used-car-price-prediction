@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CarValue - Used Car Price Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>🚗</span>
+            CarValue
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#predictor">Predict</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                MACHINE LEARNING POWERED
+            </span>
+
+            <h1>
+                Know Your Car's
+                <span>True Value.</span>
+            </h1>
+
+            <p>
+                Get an estimated market price for your used car
+                using our machine learning model.
+            </p>
+
+            <a href="#predictor" class="hero-button">
+                Predict Car Price →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Predictor Section -->
+    <section class="predictor-section" id="predictor">
+
+        <div class="section-heading">
+
+            <span class="small-title">
+                CAR VALUATION
+            </span>
+
+            <h2>
+                Tell us about your car
+            </h2>
+
+            <p>
+                Enter the details below to get an estimated selling price.
+            </p>
+
+        </div>
+
+
+        <div class="predictor-container">
+
+            <form id="predictionForm">
+
+                <div class="form-grid">
+
+                    <!-- Brand -->
+                    <div class="form-group">
+
+                        <label for="brand">
+                            Car Brand
+                        </label>
+
+                        <select id="brand" required>
+                            <option value="">Select brand</option>
+                            <option value="Maruti">Maruti</option>
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Mahindra">Mahindra</option>
+                            <option value="Tata">Tata</option>
+                            <option value="Renault">Renault</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Datsun">Datsun</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Year -->
+                    <div class="form-group">
+
+                        <label for="year">
+                            Manufacturing Year
+                        </label>
+
+                        <input
+                            type="number"
+                            id="year"
+                            min="1990"
+                            max="2026"
+                            placeholder="e.g. 2018"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- KM -->
+                    <div class="form-group">
+
+                        <label for="km_driven">
+                            Kilometers Driven
+                        </label>
+
+                        <input
+                            type="number"
+                            id="km_driven"
+                            min="0"
+                            placeholder="e.g. 40000"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Fuel -->
+                    <div class="form-group">
+
+                        <label for="fuel">
+                            Fuel Type
+                        </label>
+
+                        <select id="fuel" required>
+
+                            <option value="">
+                                Select fuel
+                            </option>
+
+                            <option value="Petrol">
+                                Petrol
+                            </option>
+
+                            <option value="Diesel">
+                                Diesel
+                            </option>
+
+                            <option value="CNG">
+                                CNG
+                            </option>
+
+                            <option value="LPG">
+                                LPG
+                            </option>
+
+                            <option value="Electric">
+                                Electric
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Transmission -->
+                    <div class="form-group">
+
+                        <label for="transmission">
+                            Transmission
+                        </label>
+
+                        <select id="transmission" required>
+
+                            <option value="">
+                                Select transmission
+                            </option>
+
+                            <option value="Manual">
+                                Manual
+                            </option>
+
+                            <option value="Automatic">
+                                Automatic
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Seller -->
+                    <div class="form-group">
+
+                        <label for="seller_type">
+                            Seller Type
+                        </label>
+
+                        <select id="seller_type" required>
+
+                            <option value="">
+                                Select seller type
+                            </option>
+
+                            <option value="Individual">
+                                Individual
+                            </option>
+
+                            <option value="Dealer">
+                                Dealer
+                            </option>
+
+                            <option value="Trustmark Dealer">
+                                Trustmark Dealer
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Owner -->
+                    <div class="form-group">
+
+                        <label for="owner">
+                            Ownership
+                        </label>
+
+                        <select id="owner" required>
+
+                            <option value="">
+                                Select ownership
+                            </option>
+
+                            <option value="First Owner">
+                                First Owner
+                            </option>
+
+                            <option value="Second Owner">
+                                Second Owner
+                            </option>
+
+                            <option value="Third Owner">
+                                Third Owner
+                            </option>
+
+                            <option value="Fourth & Above Owner">
+                                Fourth & Above Owner
+                            </option>
+
+                            <option value="Test Drive Car">
+                                Test Drive Car
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Button -->
+
+                <button
+                    type="submit"
+                    id="predictButton"
+                    class="predict-button"
+                >
+
+                    <span id="buttonText">
+                        🔮 Predict Car Price
+                    </span>
+
+                    <span
+                        id="loader"
+                        class="loader hidden"
+                    ></span>
+
+                </button>
+
+            </form>
+
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="result-card hidden"
+            >
+
+                <div class="result-icon">
+                    💰
+                </div>
+
+                <p>
+                    ESTIMATED MARKET VALUE
+                </p>
+
+                <h2 id="predictedPrice">
+                    ₹0
+                </h2>
+
+                <span>
+                    Based on the details you provided
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+
+    <section class="about" id="about">
+
+        <div class="about-content">
+
+            <span class="small-title">
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                Machine Learning for Smarter Car Pricing
+            </h2>
+
+            <p>
+                CarValue uses a machine learning regression model
+                trained on used-car data to estimate the expected
+                selling price of a vehicle.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <strong>01</strong>
+                    <span>Data Analysis</span>
+                </div>
+
+                <div class="feature">
+                    <strong>02</strong>
+                    <span>Feature Engineering</span>
+                </div>
+
+                <div class="feature">
+                    <strong>03</strong>
+                    <span>Random Forest</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 CarValue · Used Car Price Prediction
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
