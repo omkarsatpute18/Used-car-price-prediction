@@ -1,90 +1,126 @@
-css
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background: #f7f7f5;
+
     color: #171717;
+
     line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================
    NAVBAR
-========================= */
+========================================= */
 
 .navbar {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
+
     border-bottom: 1px solid #e5e5e5;
 
     backdrop-filter: blur(10px);
 }
 
+
 .nav-container {
+
     max-width: 1150px;
+
     margin: auto;
 
     padding: 18px 25px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
+
 .logo {
+
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
+    color: #171717;
+
+    text-decoration: none;
+
     font-size: 21px;
+
     font-weight: 700;
 }
 
+
 .logo-icon {
+
     font-size: 25px;
 }
 
+
 .nav-links {
+
     display: flex;
+
     gap: 30px;
 }
 
+
 .nav-links a {
+
     text-decoration: none;
+
     color: #555;
 
     font-size: 15px;
+
     font-weight: 500;
 
     transition: 0.2s;
 }
 
+
 .nav-links a:hover {
+
     color: #111;
 }
 
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero {
+
     min-height: 570px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -92,6 +128,7 @@ body {
     padding: 80px 20px;
 
     background:
+
         radial-gradient(
             circle at top,
             #ffffff 0%,
@@ -100,13 +137,19 @@ body {
         );
 }
 
+
 .hero-content {
+
     max-width: 850px;
 }
 
+
 .badge {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
 
     padding: 8px 15px;
@@ -114,19 +157,25 @@ body {
     border-radius: 50px;
 
     background: #ffffff;
+
     border: 1px solid #e3e3e3;
 
     font-size: 13px;
+
     font-weight: 600;
 
     margin-bottom: 25px;
 }
 
-.badge span {
+
+.status-dot {
+
     font-size: 10px;
 }
 
+
 .hero h1 {
+
     font-size: clamp(45px, 7vw, 78px);
 
     line-height: 1.05;
@@ -136,13 +185,19 @@ body {
     margin-bottom: 25px;
 }
 
+
 .hero h1 span {
+
     display: block;
+
     color: #666;
 }
 
+
 .hero p {
+
     max-width: 650px;
+
     margin: auto;
 
     color: #666;
@@ -154,37 +209,54 @@ body {
     margin-bottom: 35px;
 }
 
+
+/* Hero Button */
+
 .hero-button {
+
     display: inline-flex;
+
     align-items: center;
+
+    justify-content: center;
+
     gap: 15px;
 
     padding: 15px 25px;
 
     background: #171717;
+
     color: white;
+
+    border: none;
 
     border-radius: 10px;
 
-    text-decoration: none;
+    font-size: 15px;
 
     font-weight: 600;
+
+    cursor: pointer;
 
     transition: 0.25s;
 }
 
+
 .hero-button:hover {
+
     transform: translateY(-2px);
+
     background: #333;
 }
 
 
-/* =========================
-   SECTION
-========================= */
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
 
 .predictor-section,
 .about-section {
+
     max-width: 1150px;
 
     margin: auto;
@@ -192,7 +264,9 @@ body {
     padding: 90px 25px;
 }
 
+
 .section-heading {
+
     text-align: center;
 
     max-width: 650px;
@@ -200,7 +274,9 @@ body {
     margin: 0 auto 45px;
 }
 
+
 .section-label {
+
     font-size: 12px;
 
     font-weight: 700;
@@ -210,7 +286,9 @@ body {
     color: #777;
 }
 
+
 .section-heading h2 {
+
     font-size: 42px;
 
     letter-spacing: -1.5px;
@@ -218,18 +296,21 @@ body {
     margin: 10px 0;
 }
 
+
 .section-heading p {
+
     color: #777;
 
     font-size: 16px;
 }
 
 
-/* =========================
+/* =========================================
    PREDICTOR CARD
-========================= */
+========================================= */
 
 .predictor-card {
+
     background: white;
 
     border: 1px solid #e3e3e3;
@@ -242,7 +323,9 @@ body {
         0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
+
 .form-grid {
+
     display: grid;
 
     grid-template-columns: repeat(2, 1fr);
@@ -250,12 +333,17 @@ body {
     gap: 25px;
 }
 
+
 .form-group {
+
     display: flex;
+
     flex-direction: column;
 }
 
+
 .form-group label {
+
     font-size: 14px;
 
     font-weight: 600;
@@ -263,8 +351,10 @@ body {
     margin-bottom: 8px;
 }
 
+
 .form-group input,
 .form-group select {
+
     width: 100%;
 
     padding: 14px 15px;
@@ -275,6 +365,8 @@ body {
 
     background: white;
 
+    color: #171717;
+
     font-size: 15px;
 
     outline: none;
@@ -282,19 +374,25 @@ body {
     transition: 0.2s;
 }
 
+
 .form-group input:focus,
 .form-group select:focus {
+
     border-color: #555;
 
     box-shadow:
         0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
+
 .button-group {
+
     justify-content: flex-end;
 }
 
-button {
+
+#predictButton {
+
     width: 100%;
 
     padding: 14px 20px;
@@ -316,13 +414,17 @@ button {
     transition: 0.25s;
 }
 
-button:hover {
+
+#predictButton:hover {
+
     background: #333;
 
     transform: translateY(-1px);
 }
 
-button:disabled {
+
+#predictButton:disabled {
+
     opacity: 0.7;
 
     cursor: not-allowed;
@@ -331,14 +433,16 @@ button:disabled {
 }
 
 
-/* =========================
+/* =========================================
    LOADER
-========================= */
+========================================= */
 
 .loader {
+
     display: inline-block;
 
     width: 16px;
+
     height: 16px;
 
     border: 2px solid rgba(255, 255, 255, 0.4);
@@ -352,27 +456,35 @@ button:disabled {
     margin-right: 8px;
 }
 
+
 .hidden {
+
     display: none !important;
 }
+
 
 @keyframes spin {
 
     from {
+
         transform: rotate(0deg);
+
     }
 
     to {
+
         transform: rotate(360deg);
+
     }
 }
 
 
-/* =========================
+/* =========================================
    RESULT
-========================= */
+========================================= */
 
 .result {
+
     display: flex;
 
     align-items: center;
@@ -388,26 +500,60 @@ button:disabled {
     border: 1px solid #e1e1df;
 
     border-radius: 13px;
+
+    animation: resultAppear 0.4s ease;
 }
 
+
+@keyframes resultAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
 .result-icon {
+
     width: 55px;
+
     height: 55px;
 
+    min-width: 55px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
 
     background: #171717;
+
     color: white;
 
     font-size: 24px;
+
     font-weight: 700;
 }
 
+
 .result-content p {
+
     font-size: 13px;
 
     color: #777;
@@ -415,7 +561,9 @@ button:disabled {
     margin-bottom: 2px;
 }
 
+
 .result-content h3 {
+
     font-size: 32px;
 
     letter-spacing: -1px;
@@ -423,18 +571,21 @@ button:disabled {
     margin-bottom: 3px;
 }
 
+
 .result-content span {
+
     font-size: 12px;
 
     color: #888;
 }
 
 
-/* =========================
+/* =========================================
    ABOUT
-========================= */
+========================================= */
 
 .feature-grid {
+
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
@@ -442,7 +593,9 @@ button:disabled {
     gap: 20px;
 }
 
+
 .feature-card {
+
     background: white;
 
     border: 1px solid #e4e4e4;
@@ -454,37 +607,46 @@ button:disabled {
     transition: 0.25s;
 }
 
+
 .feature-card:hover {
+
     transform: translateY(-4px);
 
     box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
+
 .feature-icon {
+
     font-size: 28px;
 
     margin-bottom: 18px;
 }
 
+
 .feature-card h3 {
+
     font-size: 19px;
 
     margin-bottom: 8px;
 }
 
+
 .feature-card p {
+
     color: #777;
 
     font-size: 14px;
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
+
     background: #171717;
 
     color: white;
@@ -492,7 +654,9 @@ footer {
     padding: 45px 25px 25px;
 }
 
+
 .footer-content {
+
     max-width: 1100px;
 
     margin: auto;
@@ -506,13 +670,23 @@ footer {
     padding-bottom: 30px;
 }
 
+
+.footer-content .logo {
+
+    color: white;
+}
+
+
 .footer-content p {
+
     color: #aaa;
 
     font-size: 14px;
 }
 
+
 .footer-bottom {
+
     max-width: 1100px;
 
     margin: auto;
@@ -529,41 +703,56 @@ footer {
 }
 
 
-/* =========================
+/* =========================================
    RESPONSIVE
-========================= */
+========================================= */
 
 @media (max-width: 750px) {
 
     .nav-links {
+
         display: none;
     }
 
+
     .hero {
+
         min-height: 500px;
     }
 
+
     .hero h1 {
+
         letter-spacing: -2px;
     }
 
+
     .section-heading h2 {
+
         font-size: 34px;
     }
 
+
     .predictor-card {
+
         padding: 25px;
     }
 
+
     .form-grid {
+
         grid-template-columns: 1fr;
     }
+
 
     .feature-grid {
+
         grid-template-columns: 1fr;
     }
 
+
     .footer-content {
+
         flex-direction: column;
 
         gap: 15px;
@@ -571,7 +760,10 @@ footer {
         text-align: center;
     }
 
+
     .result {
+
         align-items: flex-start;
     }
+
 }

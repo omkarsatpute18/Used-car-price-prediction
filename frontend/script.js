@@ -1,162 +1,278 @@
-javascript
-const form = document.getElementById("predictionForm");
+// ============================================================
+// SMOOTH SCROLL TO PREDICTOR
+// ============================================================
 
-const result = document.getElementById("result");
-const predictedPrice = document.getElementById("predictedPrice");
+function scrollToPredictor() {
 
-const predictButton = document.getElementById("predictButton");
-const buttonText = document.getElementById("buttonText");
-const loader = document.getElementById("loader");
+    const predictor =
+        document.getElementById("predictor");
 
+    if (predictor) {
 
-form.addEventListener("submit", async function (event) {
+        predictor.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
-    event.preventDefault();
-
-
-    // Get values from the form
-    const brand =
-        document.getElementById("brand").value;
-
-    const year =
-        document.getElementById("year").value;
-
-    const kmDriven =
-        document.getElementById("km_driven").value;
-
-    const fuel =
-        document.getElementById("fuel").value;
-
-    const transmission =
-        document.getElementById("transmission").value;
-
-    const sellerType =
-        document.getElementById("seller_type").value;
-
-    const owner =
-        document.getElementById("owner").value;
-
-
-    // Basic validation
-    if (
-        !brand ||
-        !year ||
-        !kmDriven ||
-        !fuel ||
-        !transmission ||
-        !sellerType ||
-        !owner
-    ) {
-
-        alert("Please fill in all the fields.");
-
-        return;
     }
 
-
-    // Show loading state
-    buttonText.classList.add("hidden");
-
-    loader.classList.remove("hidden");
-
-    predictButton.disabled = true;
+}
 
 
-    try {
+// ============================================================
+// GET HTML ELEMENTS
+// ============================================================
 
-        // Send data to Flask
-        const response = await fetch(
-            "http://127.0.0.1:5000/predict",
-            {
-                method: "POST",
+const form =
+    document.getElementById("predictionForm");
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+const result =
+    document.getElementById("result");
 
-                body: JSON.stringify({
+const predictedPrice =
+    document.getElementById("predictedPrice");
 
-                    brand: brand,
+const predictButton =
+    document.getElementById("predictButton");
 
-                    year: Number(year),
+const buttonText =
+    document.getElementById("buttonText");
 
-                    km_driven: Number(kmDriven),
+const loader =
+    document.getElementById("loader");
 
-                    fuel: fuel,
 
-                    seller_type: sellerType,
+// ============================================================
+// FORM SUBMISSION
+// ============================================================
 
-                    transmission: transmission,
+form.addEventListener(
+    "submit",
+    async function (event) {
 
-                    owner: owner
+        event.preventDefault();
 
-                })
+
+        // ----------------------------------------------------
+        // Get values
+        // ----------------------------------------------------
+
+        const brand =
+            document.getElementById("brand").value;
+
+        const year =
+            document.getElementById("year").value;
+
+        const kmDriven =
+            document.getElementById("km_driven").value;
+
+        const fuel =
+            document.getElementById("fuel").value;
+
+        const transmission =
+            document.getElementById("transmission").value;
+
+        const sellerType =
+            document.getElementById("seller_type").value;
+
+        const owner =
+            document.getElementById("owner").value;
+
+
+        // ----------------------------------------------------
+        // Validate fields
+        // ----------------------------------------------------
+
+        if (
+            !brand ||
+            !year ||
+            !kmDriven ||
+            !fuel ||
+            !transmission ||
+            !sellerType ||
+            !owner
+        ) {
+
+            alert(
+                "Please fill in all the fields."
+            );
+
+            return;
+        }
+
+
+        // ----------------------------------------------------
+        // Validate numbers
+        // ----------------------------------------------------
+
+        if (
+            Number(year) < 1990 ||
+            Number(year) > 2026
+        ) {
+
+            alert(
+                "Please enter a valid manufacturing year."
+            );
+
+            return;
+        }
+
+
+        if (Number(kmDriven) < 0) {
+
+            alert(
+                "Kilometers driven cannot be negative."
+            );
+
+            return;
+        }
+
+
+        // ----------------------------------------------------
+        // Show loading state
+        // ----------------------------------------------------
+
+        buttonText.classList.add("hidden");
+
+        loader.classList.remove("hidden");
+
+        predictButton.disabled = true;
+
+
+        try {
+
+            // ------------------------------------------------
+            // Send request to Flask
+            // ------------------------------------------------
+
+            const response = await fetch(
+                "/predict",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        brand: brand,
+
+                        year: Number(year),
+
+                        km_driven: Number(kmDriven),
+
+                        fuel: fuel,
+
+                        seller_type: sellerType,
+
+                        transmission: transmission,
+
+                        owner: owner
+
+                    })
+                }
+            );
+
+
+            // ------------------------------------------------
+            // Read response
+            // ------------------------------------------------
+
+            const data =
+                await response.json();
+
+
+            // ------------------------------------------------
+            // Check response
+            // ------------------------------------------------
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
+
+                throw new Error(
+                    data.error ||
+                    "Prediction failed."
+                );
+
             }
-        );
 
 
-        // Convert response to JSON
-        const data = await response.json();
+            // ------------------------------------------------
+            // Format Indian currency
+            // ------------------------------------------------
+
+            const formattedPrice =
+                new Intl.NumberFormat(
+                    "en-IN",
+                    {
+                        style: "currency",
+
+                        currency: "INR",
+
+                        maximumFractionDigits: 0
+                    }
+                ).format(
+                    data.predicted_price
+                );
 
 
-        // Check API response
-        if (!response.ok || !data.success) {
+            // ------------------------------------------------
+            // Display result
+            // ------------------------------------------------
 
-            throw new Error(
-                data.error ||
-                "Prediction failed."
+            predictedPrice.textContent =
+                formattedPrice;
+
+            result.classList.remove("hidden");
+
+
+            // ------------------------------------------------
+            // Scroll to result
+            // ------------------------------------------------
+
+            setTimeout(function () {
+
+                result.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Prediction Error:",
+                error
+            );
+
+
+            alert(
+                "Unable to predict the car price.\n\n" +
+                error.message
             );
 
         }
 
+        finally {
 
-        // Format price in Indian currency
-        const formattedPrice =
-            new Intl.NumberFormat(
-                "en-IN",
-                {
-                    style: "currency",
-                    currency: "INR",
-                    maximumFractionDigits: 0
-                }
-            ).format(data.predicted_price);
+            // ------------------------------------------------
+            // Restore button
+            // ------------------------------------------------
 
+            buttonText.classList.remove("hidden");
 
-        // Display result
-        predictedPrice.textContent =
-            formattedPrice;
+            loader.classList.add("hidden");
 
-        result.classList.remove("hidden");
+            predictButton.disabled = false;
 
-
-        // Scroll to result
-        result.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-
-    } catch (error) {
-
-        console.error(
-            "Prediction Error:",
-            error
-        );
-
-        alert(
-            "Unable to predict the car price.\n\n" +
-            "Please make sure the Flask backend is running."
-        );
-
-    } finally {
-
-        // Restore button
-        buttonText.classList.remove("hidden");
-
-        loader.classList.add("hidden");
-
-        predictButton.disabled = false;
+        }
 
     }
-
-});
+);
