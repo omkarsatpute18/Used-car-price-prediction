@@ -1,11 +1,11 @@
+html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CarValue - Used Car Price Predictor</title>
+    <title>CarValue | Used Car Price Prediction</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,18 +14,18 @@
 
     <!-- Navigation -->
     <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>CarValue</span>
+            </div>
 
-        <div class="logo">
-            <span>🚗</span>
-            CarValue
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#predictor">Predict</a>
+                <a href="#about">About</a>
+            </div>
         </div>
-
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#predictor">Predict</a>
-            <a href="#about">About</a>
-        </div>
-
     </nav>
 
 
@@ -34,9 +34,10 @@
 
         <div class="hero-content">
 
-            <span class="badge">
-                MACHINE LEARNING POWERED
-            </span>
+            <div class="badge">
+                <span>●</span>
+                Machine Learning Powered
+            </div>
 
             <h1>
                 Know Your Car's
@@ -44,12 +45,14 @@
             </h1>
 
             <p>
-                Get an estimated market price for your used car
-                using our machine learning model.
+                Get an estimated resale price for your used car
+                using a machine learning model trained on real
+                car market data.
             </p>
 
             <a href="#predictor" class="hero-button">
-                Predict Car Price →
+                Predict Your Car Price
+                <span>→</span>
             </a>
 
         </div>
@@ -61,23 +64,18 @@
     <section class="predictor-section" id="predictor">
 
         <div class="section-heading">
+            <span class="section-label">PRICE ESTIMATOR</span>
 
-            <span class="small-title">
-                CAR VALUATION
-            </span>
-
-            <h2>
-                Tell us about your car
-            </h2>
+            <h2>Tell us about your car</h2>
 
             <p>
-                Enter the details below to get an estimated selling price.
+                Enter the details below to get an estimated
+                market value.
             </p>
-
         </div>
 
 
-        <div class="predictor-container">
+        <div class="predictor-card">
 
             <form id="predictionForm">
 
@@ -85,13 +83,12 @@
 
                     <!-- Brand -->
                     <div class="form-group">
-
-                        <label for="brand">
-                            Car Brand
-                        </label>
+                        <label for="brand">Car Brand</label>
 
                         <select id="brand" required>
+
                             <option value="">Select brand</option>
+
                             <option value="Maruti">Maruti</option>
                             <option value="Hyundai">Hyundai</option>
                             <option value="Honda">Honda</option>
@@ -101,18 +98,26 @@
                             <option value="Tata">Tata</option>
                             <option value="Renault">Renault</option>
                             <option value="Volkswagen">Volkswagen</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Skoda">Skoda</option>
+                            <option value="Fiat">Fiat</option>
                             <option value="Datsun">Datsun</option>
-                        </select>
+                            <option value="Jeep">Jeep</option>
+                            <option value="Kia">Kia</option>
+                            <option value="MG">MG</option>
+                            <option value="Audi">Audi</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
 
+                        </select>
                     </div>
 
 
-                    <!-- Year -->
+                    <!-- Manufacturing Year -->
                     <div class="form-group">
 
-                        <label for="year">
-                            Manufacturing Year
-                        </label>
+                        <label for="year">Manufacturing Year</label>
 
                         <input
                             type="number"
@@ -126,18 +131,16 @@
                     </div>
 
 
-                    <!-- KM -->
+                    <!-- Kilometers -->
                     <div class="form-group">
 
-                        <label for="km_driven">
-                            Kilometers Driven
-                        </label>
+                        <label for="km_driven">Kilometers Driven</label>
 
                         <input
                             type="number"
                             id="km_driven"
                             min="0"
-                            placeholder="e.g. 40000"
+                            placeholder="e.g. 50000"
                             required
                         >
 
@@ -147,35 +150,17 @@
                     <!-- Fuel -->
                     <div class="form-group">
 
-                        <label for="fuel">
-                            Fuel Type
-                        </label>
+                        <label for="fuel">Fuel Type</label>
 
                         <select id="fuel" required>
 
-                            <option value="">
-                                Select fuel
-                            </option>
+                            <option value="">Select fuel type</option>
 
-                            <option value="Petrol">
-                                Petrol
-                            </option>
-
-                            <option value="Diesel">
-                                Diesel
-                            </option>
-
-                            <option value="CNG">
-                                CNG
-                            </option>
-
-                            <option value="LPG">
-                                LPG
-                            </option>
-
-                            <option value="Electric">
-                                Electric
-                            </option>
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="CNG">CNG</option>
+                            <option value="LPG">LPG</option>
+                            <option value="Electric">Electric</option>
 
                         </select>
 
@@ -185,50 +170,31 @@
                     <!-- Transmission -->
                     <div class="form-group">
 
-                        <label for="transmission">
-                            Transmission
-                        </label>
+                        <label for="transmission">Transmission</label>
 
                         <select id="transmission" required>
 
-                            <option value="">
-                                Select transmission
-                            </option>
+                            <option value="">Select transmission</option>
 
-                            <option value="Manual">
-                                Manual
-                            </option>
-
-                            <option value="Automatic">
-                                Automatic
-                            </option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
 
                         </select>
 
                     </div>
 
 
-                    <!-- Seller -->
+                    <!-- Seller Type -->
                     <div class="form-group">
 
-                        <label for="seller_type">
-                            Seller Type
-                        </label>
+                        <label for="seller_type">Seller Type</label>
 
                         <select id="seller_type" required>
 
-                            <option value="">
-                                Select seller type
-                            </option>
+                            <option value="">Select seller type</option>
 
-                            <option value="Individual">
-                                Individual
-                            </option>
-
-                            <option value="Dealer">
-                                Dealer
-                            </option>
-
+                            <option value="Individual">Individual</option>
+                            <option value="Dealer">Dealer</option>
                             <option value="Trustmark Dealer">
                                 Trustmark Dealer
                             </option>
@@ -241,32 +207,18 @@
                     <!-- Owner -->
                     <div class="form-group">
 
-                        <label for="owner">
-                            Ownership
-                        </label>
+                        <label for="owner">Ownership</label>
 
                         <select id="owner" required>
 
-                            <option value="">
-                                Select ownership
-                            </option>
+                            <option value="">Select ownership</option>
 
-                            <option value="First Owner">
-                                First Owner
-                            </option>
-
-                            <option value="Second Owner">
-                                Second Owner
-                            </option>
-
-                            <option value="Third Owner">
-                                Third Owner
-                            </option>
-
+                            <option value="First Owner">First Owner</option>
+                            <option value="Second Owner">Second Owner</option>
+                            <option value="Third Owner">Third Owner</option>
                             <option value="Fourth & Above Owner">
                                 Fourth & Above Owner
                             </option>
-
                             <option value="Test Drive Car">
                                 Test Drive Car
                             </option>
@@ -275,53 +227,56 @@
 
                     </div>
 
+
+                    <!-- Button -->
+                    <div class="form-group button-group">
+
+                        <button
+                            type="submit"
+                            id="predictButton"
+                        >
+
+                            <span id="buttonText">
+                                Estimate Price
+                            </span>
+
+                            <span
+                                id="loader"
+                                class="loader hidden"
+                            ></span>
+
+                            <span id="arrow">→</span>
+
+                        </button>
+
+                    </div>
+
                 </div>
-
-
-                <!-- Button -->
-
-                <button
-                    type="submit"
-                    id="predictButton"
-                    class="predict-button"
-                >
-
-                    <span id="buttonText">
-                        🔮 Predict Car Price
-                    </span>
-
-                    <span
-                        id="loader"
-                        class="loader hidden"
-                    ></span>
-
-                </button>
 
             </form>
 
 
             <!-- Result -->
-
-            <div
-                id="result"
-                class="result-card hidden"
-            >
+            <div id="result" class="result hidden">
 
                 <div class="result-icon">
-                    💰
+                    ₹
                 </div>
 
-                <p>
-                    ESTIMATED MARKET VALUE
-                </p>
+                <div class="result-content">
 
-                <h2 id="predictedPrice">
-                    ₹0
-                </h2>
+                    <p>Estimated Market Value</p>
 
-                <span>
-                    Based on the details you provided
-                </span>
+                    <h3 id="predictedPrice">
+                        ₹0
+                    </h3>
+
+                    <span>
+                        This is an estimated value based on
+                        the information provided.
+                    </span>
+
+                </div>
 
             </div>
 
@@ -331,41 +286,62 @@
 
 
     <!-- About Section -->
+    <section class="about-section" id="about">
 
-    <section class="about" id="about">
+        <div class="section-heading">
 
-        <div class="about-content">
+            <span class="section-label">ABOUT THE PROJECT</span>
 
-            <span class="small-title">
-                ABOUT THE PROJECT
-            </span>
-
-            <h2>
-                Machine Learning for Smarter Car Pricing
-            </h2>
+            <h2>How does it work?</h2>
 
             <p>
-                CarValue uses a machine learning regression model
-                trained on used-car data to estimate the expected
-                selling price of a vehicle.
+                Our prediction system uses machine learning
+                to estimate the resale value of a used car.
             </p>
 
-            <div class="features">
+        </div>
 
-                <div class="feature">
-                    <strong>01</strong>
-                    <span>Data Analysis</span>
-                </div>
 
-                <div class="feature">
-                    <strong>02</strong>
-                    <span>Feature Engineering</span>
-                </div>
+        <div class="feature-grid">
 
-                <div class="feature">
-                    <strong>03</strong>
-                    <span>Random Forest</span>
-                </div>
+            <div class="feature-card">
+
+                <div class="feature-icon">📊</div>
+
+                <h3>Real Data</h3>
+
+                <p>
+                    The model is trained using real-world
+                    used car listings.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🧠</div>
+
+                <h3>Machine Learning</h3>
+
+                <p>
+                    A Random Forest regression model learns
+                    patterns from historical car prices.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>Instant Prediction</h3>
+
+                <p>
+                    Enter your car details and receive a
+                    predicted price within seconds.
+                </p>
 
             </div>
 
@@ -374,11 +350,25 @@
     </section>
 
 
+    <!-- Footer -->
     <footer>
 
-        <p>
-            © 2026 CarValue · Used Car Price Prediction
-        </p>
+        <div class="footer-content">
+
+            <div class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>CarValue</span>
+            </div>
+
+            <p>
+                Used Car Price Prediction using Machine Learning
+            </p>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 CarValue. Built for educational purposes.
+        </div>
 
     </footer>
 
@@ -386,5 +376,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
